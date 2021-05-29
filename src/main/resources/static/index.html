@@ -5,115 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hangman!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<section class="section">
-    <div class="container">
-        <h1 class="title">
-            Hello World
-        </h1>
+<section class="hero is-warning">
+    <div class="hero-body">
+        <p class="title">
+            Hangman
+        </p>
         <p class="subtitle">
-            My first website with <strong>Bulma</strong>!
+            Das Original!
         </p>
     </div>
 </section>
 
-<section>
-    <div class="columns">
-        <div class="column">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">Dennis Godec</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                    </div>
-                </div>
+<section class="section">
 
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                    <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br>
-                    <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
-                </div>
-        </div>
-        </div>
-        <div class="column">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">Abishek Anthony</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                    </div>
-                </div>
+    <div class="has-text-centered">
+        <h5 class="subtitle is-5">Hangman ist im deutschen Sprachgebrauch auch als Galgenmännchen bekannt.</h5>
 
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                    <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br>
-                    <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
-                </div>
-        </div>
-        </div>
-        <div class="column">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">Tim Schützle</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                    </div>
-                </div>
+        <h5 class="subtitle is-6">Sie erhalten ein zufälliges Wort und haben XX Versuche, das Wort zu erraten.</h5>
+        <p>
+            Das Spiel folgt folgendem Beispiel: <br>
+            Verdecktes Wort:	a	_	_	_	<br>
+            Gesuchtes Wort:	    a 	u   t   o
+        </p>
 
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                    <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br>
-                    <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
-                </div>
-        </div>
-        </div>
-        <div class="column">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">Alex Glohs</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                    </div>
-                </div>
-
-                <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                    <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br>
-                    <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
-                </div>
-        </div>
+        <figure class="image is-128x128 is-horizontal-center">
+            <img src="assets/images/hangman.png">
+        </figure>
+        <br>
+        <p>
+            Bei einer Falscheingabe baut sich das Galgenmännchen auf.
+        </p>
     </div>
-        </div>
+
+
+
+    <!--<p>
+         Ein anderer Mitspieler oder im Falle des Onlinespiels, der Computer, wählt ein zufälliges Wort.
+        Der Spieler, also Sie, erhält nur die Anzahl der Buchstaben. Diese werden durch Unterstriche gekennzeichnet. Sie müssen versuchen das Wort zu erraten, welches sich hinter den Strichen verbirgt.
+        Sie haben die Möglichkeit einzelne Buchstaben zu nennen. Ist ein Buchstabe in dem gesuchten Wort vorhanden, so wird es durch die Striche ersetzt.
+
+        Beispiel, nach Eingabe des Buchstabens 'a':
+
+        Verdecktes Wort:	a	_	_	_	_	_	a	_	_
+        Gesuchtes Wort:	a	p	f	e	l	b	a	u	m
+        Ist der erratene Buchstabe nicht vorhanden, so wird der Galgen weitergezeichnet bzw. man hat einen Versuch weniger zum Raten.
+        Die Anzahl der Versuche ist veränderbar.
+        Weiterhin kann man auch versuchen, das ganze Wort zu erraten. Liegt man mit dem versuchten Wort aber falsch, so wird der Galgen erneut weitergezeichnet und ein Versuch wird abgezogen.
+        Wichtig! Teilwörter, wie zum Beispiel Apfel in Apfelbaum werden als falsch gewertet!
+
+        Der Spielablauf auf dieser Seite:
+
+        Buchstaben und Wörter werden in das Eingabefeld eingegeben
+        Es werden nur Kleinbuchstaben benutzt
+        Nur Buchstaben und Umlaute (ä, ö, ü, ß), keine Leerzeichen
+        Die Schwierigkeit kann von Ihnen eingestellt werden: 10 oder 15 Versuche
+        Sie können einen Buchstaben oder ein ganzens Wort in das Feld eintragen
+
+    </p> -->
 
 </section>
+
+<section class="section">
+    <!--Infos -->
+    <div class="has-text-centered">
+        <button class="button is-medium is-link">Spiel starten</button>
+    </div>
+    <br>
+    <br>
+    <div class="has-text-centered">
+        <button class="button is-medium is-primary">Highscore anzeigen</button>
+    </div>
+    <br>
+    <br>
+</section>
+
 </body>
+
+<footer>
+    <section class="section">
+        <!--Unsere Infos -->
+        <div class="columns">
+            <div class="column">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Dennis Godec</p>
+                            <p class="subtitle is-6">@johnsmith</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                        <br>
+                        <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Abishek Anthony</p>
+                            <p class="subtitle is-6">@johnsmith</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                        <br>
+                        <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Tim Schützle</p>
+                            <p class="subtitle is-6">@johnsmith</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                        <br>
+                        <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Alex Glohs</p>
+                            <p class="subtitle is-6">@johnsmith</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                        <br>
+                        <time datetime="2016-1-1">10:58 AM - 29 May 2021</time>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</footer>
 </html>
