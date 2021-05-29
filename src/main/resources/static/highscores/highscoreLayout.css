@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.section {
+    flex: 1;
+}
+
+.footer {
+    flex: 1;
+}
+
+.containerFixedSize {
+    height: 80%;
+}
+
+.scrollableContent {
+    overflow: auto;
+}
