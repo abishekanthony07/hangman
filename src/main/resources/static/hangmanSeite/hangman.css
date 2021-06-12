@@ -29,4 +29,18 @@ kbd {
 
 .hiddenText {
     font-size:40px;
+
+}
+
+.is-horizontal-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hangmanZustand {
+    margin-left: 38%;
+    margin-right: 33%;
+    width: 480px;
+    height: 300px;
+
 }
