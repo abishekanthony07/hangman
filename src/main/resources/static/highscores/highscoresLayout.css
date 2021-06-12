@@ -12,10 +12,14 @@
     flex: 1;
 }
 
-.containerFixedSize {
-    height: 80%;
-}
-
 .scrollableContent {
     overflow: auto;
+    width: 100%;
+    height: 60vh;
+    overflow-x:hidden;
+}
+.buttonLink{
+    cursor: text;
+    text-decoration: none;
+    color: black;
 }
