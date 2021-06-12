@@ -1,0 +1,46 @@
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: 2em;
+    font-weight: 800;
+    line-height: 1;
+    padding: 4px 14px;
+    white-space: nowrap;
+   }
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.centerContent {
+    text-align:center;
+}
+
+.buttonLink {
+    cursor: text;
+    text-decoration: none;
+    color: black;
+}
+
+.hiddenText {
+    font-size:40px;
+
+}
+
+.is-horizontal-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hangmanZustand {
+    margin-left: 38%;
+    margin-right: 33%;
+    width: 480px;
+    height: 300px;
+
+}
