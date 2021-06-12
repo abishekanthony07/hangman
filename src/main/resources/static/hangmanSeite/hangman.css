@@ -12,14 +12,21 @@ kbd {
     white-space: nowrap;
    }
 
-#tableCentered {
+.centered {
     margin-left: auto;
     margin-right: auto;
 
+}
+.centerContent {
+    text-align:center;
 }
 
 .buttonLink {
     cursor: text;
     text-decoration: none;
     color: black;
+}
+
+.hiddenText {
+    font-size:40px;
 }
