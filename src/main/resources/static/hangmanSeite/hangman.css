@@ -17,3 +17,9 @@ kbd {
     margin-right: auto;
 
 }
+
+.buttonLink {
+    cursor: text;
+    text-decoration: none;
+    color: black;
+}
