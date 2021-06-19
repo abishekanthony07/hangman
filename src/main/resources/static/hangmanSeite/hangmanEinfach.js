@@ -39,3 +39,42 @@ function generateUnderscore(){
         return false
     }
 }
+
+function aktualisiereBild(fehler) {
+            var pfad = "../assets/images/zuständeHangman/Hangman_";
+            var fehlerteil = "_Fehler";
+            var dateityp = ".png";
+            switch (fehler) {
+              case 0:
+                return pfad + "0" + fehlerteil + dateityp;
+              case 1:
+                return  pfad + "1" + fehlerteil + dateityp;
+              case 2:
+                return pfad + "2" + fehlerteil + dateityp;
+              case 3:
+                return pfad + "3" + fehlerteil + dateityp;
+              case 4:
+                 return pfad + "4" + fehlerteil + dateityp;
+              case 5:
+                 return pfad + "5" + fehlerteil + dateityp;
+              case 6:
+                 return pfad + "6" + fehlerteil + dateityp;
+              case 7:
+                 return pfad + "7" + fehlerteil + dateityp;
+              case 8:
+                  return pfad + "8" + fehlerteil + dateityp;
+              case 9:
+                  return pfad + "9" + fehlerteil + dateityp;
+              case 10:
+                  return pfad + "game_over" + dateityp;
+            }
+        }
+
+function  fehlerEingabeVonUser() {
+     fehlerAnzahlUser++;
+
+      var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
+
+      document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
+
+}
