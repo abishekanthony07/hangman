@@ -5,6 +5,7 @@ var fehlerAnzahlUser = 0;
 function initView(){
     initKeyboard();
     generateUnderscore();
+
 }
 
 function initKeyboard(){
@@ -107,10 +108,12 @@ function aktualisiereBild(fehler) {
               case 10:
                   return pfad + "game_over" + dateityp;
             }
-        }
+}
 
-function  fehlerEingabeVonUser() {
-     fehlerAnzahlUser++;
+function fehlerEingabeVonUser() {
+    fehlerAnzahlUser++;
+
+    var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
 
      if(fehlerAnzahlUser >= 11) {
      alert("GAME OVER...du Lusche");
@@ -121,4 +124,16 @@ function  fehlerEingabeVonUser() {
 
 
 
+function saveGame(username, score) {
+    const json = JSON.stringify({ "username": username, "score": score })
+    const url = 'http://localhost:9090/api/highscore';
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send();
+    xhr.onload = function () {
+        // xhr.response beinhaltet die deserialisierte JSON-Antwort
+        console.log(xhr.response)
+    };
+    return json
 }

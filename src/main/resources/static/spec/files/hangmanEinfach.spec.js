@@ -4,6 +4,13 @@ describe('Testen der Unterstriche', function (){
     });
 })
 
+describe('Testen des Speicherns', function (){
+    it('should test save', function () {
+        expect(saveGame("TestUser", "12")).toBe("{\"username\":\"TestUser\",\"score\":\"12\"}");
+    });
+})
+
+
 
 describe('Testen der Bildaktualisierung', function (){
     it('Test mit 0 Fehler des Users', function () {
@@ -78,7 +85,6 @@ describe('Testen der Bildaktualisierung', function (){
 
     it('Test mit 10 Fehler des Users', function () {
                 var pfad = "../assets/images/zuständeHangman/Hangman_";
-                var fehlerteil = "_Fehler";
                 var dateityp = ".png";
         expect(aktualisiereBild(10)).toBe(pfad + "game_over" + dateityp);
     });
