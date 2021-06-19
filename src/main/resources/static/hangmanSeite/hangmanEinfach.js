@@ -5,7 +5,7 @@ var fehlerAnzahlUser = 0;
 function initView(){
     initKeyboard();
     generateUnderscore();
-
+    initSaveButton();
 }
 
 function initKeyboard(){
@@ -14,6 +14,13 @@ function initKeyboard(){
     for (let i = 0; i < arrayIDs.length; i++) {
         document.getElementById(arrayIDs[i]).onclick = function(){ueberPruefeEingabe(arrayIDs[i])};
     }
+}
+
+function initSaveButton() {
+    //TODO - alert write username
+    document.getElementById("saveHighscore").onclick = function(){
+        // saveGame("","")
+    };
 }
 
 function ueberPruefeEingabe(buchstabe){
@@ -115,12 +122,13 @@ function fehlerEingabeVonUser() {
 
     var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
 
-     if(fehlerAnzahlUser >= 11) {
-     alert("GAME OVER...du Lusche");
-     } else if(fehlerAnzahlUser < 11) {
-     var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
-     document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
-     }
+    if (fehlerAnzahlUser >= 11) {
+        alert("GAME OVER...du Lusche");
+    } else if (fehlerAnzahlUser < 11) {
+        var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
+        document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
+    }
+}
 
 
 
