@@ -1,6 +1,6 @@
 const zuSuchendesWort = 'Hausbauer';
 
-window.onload = initView;
+// window.onload = initView;
 
 function initView(){
     initKeyboard();
@@ -8,7 +8,7 @@ function initView(){
 }
 
 function initKeyboard(){
-
+    return "Abiushek";
 }
 
 function generateUnderscore(){
@@ -26,5 +26,10 @@ function generateUnderscore(){
         div.appendChild(u);
         div.appendChild(platzHalter);
     }
-    return head.appendChild(div);
+    if (head !== null){
+        head.appendChild(div)
+        return true
+    }else {
+        return false
+    }
 }
