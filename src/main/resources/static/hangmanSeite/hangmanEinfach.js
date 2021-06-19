@@ -1,4 +1,6 @@
-const zuSuchendesWort = 'Hausbauer';
+const zuSuchendesWort = 'HAUSBAUER';
+const arrayGenutzeBuchstaben = [];
+var fehlerAnzahlUser = 0;
 
 function initView(){
     initKeyboard();
@@ -13,12 +15,49 @@ function initKeyboard(){
     }
 }
 
-function ueberPruefeEingabe(value){
-    console.log(value)
+function ueberPruefeEingabe(buchstabe){
+    console.log(buchstabe);
+    if(arrayGenutzeBuchstaben.includes(buchstabe)) {
+        alert("Buchstabe " + buchstabe + " wurde bereits eingegeben");
+    } else {
+       arrayGenutzeBuchstaben.push(buchstabe);
+       document.getElementById(buchstabe).style.backgroundColor = "grey";
+       if(enthältZuSuchendesWortDenBuchstaben(buchstabe)) {
+            fuelleDieUnterstriche(buchstabe);
+        } else {
+            fehlerEingabeVonUser();
+        }
+    }
+
+}
+
+function enthältZuSuchendesWortDenBuchstaben(buchstabe) {
+    if(zuSuchendesWort.includes(buchstabe)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function fuelleDieUnterstriche(buchstabe) {
+    var indices = [];
+    for (let i = 0; i < zuSuchendesWort.length; i++) {
+        if(zuSuchendesWort[i] === buchstabe) {
+        indices.push(i);
+        }
+
+    }
+
+    for (let i = 0; i < indices.length; i++) {
+         var id = "underscore-" + indices[i];
+         document.getElementById(id).innerHTML = `&nbsp;${buchstabe}&nbsp;`;
+
+        }
+
 }
 
 function generateUnderscore(){
-    const head = document.getElementById("zuErwartendesWort")
+    const head = document.getElementById("zuErwartendesWort");
     const div = document.createElement("div");
     div.className = 'box centered centerContent';
 
@@ -73,8 +112,13 @@ function aktualisiereBild(fehler) {
 function  fehlerEingabeVonUser() {
      fehlerAnzahlUser++;
 
-      var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
+     if(fehlerAnzahlUser >= 11) {
+     alert("GAME OVER...du Lusche");
+     } else if(fehlerAnzahlUser < 11) {
+     var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
+     document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
+     }
 
-      document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
+
 
 }
