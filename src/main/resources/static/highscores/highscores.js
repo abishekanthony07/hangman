@@ -1,7 +1,5 @@
 var automarkenURL = 'http://localhost:9090/api/highscore';
 
-window.onload = loadValues;
-
 function loadValues() {
     loadHighscores();
 }
@@ -24,7 +22,6 @@ function showResult(head, array) {
     const container = document.createElement("div");
     container.className = "container"
     let div;
-    debugger;
     if (array.length>0){
         div = notEmptyList(i, array);
     }else{
