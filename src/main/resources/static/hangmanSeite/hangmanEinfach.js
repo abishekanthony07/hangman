@@ -2,7 +2,9 @@ const zuSuchendesWort = 'Hausbauer';
 
 function initView(){
     initKeyboard();
+    initSaveButton();
     generateUnderscore();
+
 }
 
 function initKeyboard(){
@@ -11,6 +13,10 @@ function initKeyboard(){
     for (let i = 0; i < arrayIDs.length; i++) {
         document.getElementById(arrayIDs[i]).onclick = function(){ueberPruefeEingabe(arrayIDs[i])};
     }
+}
+
+function initSaveButton() {
+    // saveGame("abish", 23);
 }
 
 function ueberPruefeEingabe(value){
@@ -68,13 +74,27 @@ function aktualisiereBild(fehler) {
               case 10:
                   return pfad + "game_over" + dateityp;
             }
-        }
+}
 
-function  fehlerEingabeVonUser() {
-     fehlerAnzahlUser++;
+function fehlerEingabeVonUser() {
+    fehlerAnzahlUser++;
 
-      var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
+    var pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
 
-      document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
+    document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
 
+}
+
+function saveGame(username, score) {
+    const json = JSON.stringify({ "username": username, "score": score })
+    const url = 'http://localhost:9090/api/highscore';
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send();
+    xhr.onload = function () {
+        // xhr.response beinhaltet die deserialisierte JSON-Antwort
+        console.log(xhr.response)
+    };
+    return json
 }
