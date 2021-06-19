@@ -1,14 +1,20 @@
 const zuSuchendesWort = 'Hausbauer';
 
-// window.onload = initView;
-
 function initView(){
     initKeyboard();
     generateUnderscore();
 }
 
 function initKeyboard(){
-    return "Abiushek";
+    const arrayIDs = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+        "S", "T", "U", "V", "W", "X", "Y", "Z", "Ä", "Ü", "Ö", "ß"]
+    for (let i = 0; i < arrayIDs.length; i++) {
+        document.getElementById(arrayIDs[i]).onclick = function(){ueberPruefeEingabe(arrayIDs[i])};
+    }
+}
+
+function ueberPruefeEingabe(value){
+    console.log(value)
 }
 
 function generateUnderscore(){
