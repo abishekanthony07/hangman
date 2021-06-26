@@ -6,32 +6,27 @@ const rounds = 0;
 const highscoreURL = 'http://localhost:9090/api/highscore';
 
 function initView() {
-getRandomWord();
+    getRandomWord();
     initKeyboard();
-    generateUnderscore();
     initSaveButton();
 }
 
 function getRandomWord() {
  const path = "/Liste.txt";
 
- var file = new XMLHttpRequest();
+    const file = new XMLHttpRequest();
     file.open("GET", path, false);
     file.onreadystatechange = function ()
     {
         if(file.readyState === 4)
         {
-            if(file.status === 200 || file.status == 0)
-            {
-
-               var allData = file.responseText;
-               var lines = allData.split("\n");
-               var randomNumber = Math.floor(Math.random() * lines.length);
-
-               var line = lines[randomNumber];
-
-              zuSuchendesWort = line;
-              alert(line);
+            if (file.status === 200 || file.status === 0) {
+                const allData = file.responseText;
+                const lines = allData.split("\n");
+                const randomNumber = Math.floor(Math.random() * lines.length);
+                const line = lines[randomNumber];
+                zuSuchendesWort = line.replace("\r","").toUpperCase();
+                generateUnderscore();
             }
         }
     }
@@ -111,6 +106,7 @@ function newGame() {
     spielgewonnen = false;
     pfadZuHangmanZustand = aktualisiereBild(0);
     document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
+    getRandomWord()
 }
 
 function setzeBackgroundColorZurueck(arrayGenutzeBuchstaben) {
@@ -156,7 +152,10 @@ function istWortBereitsErraten() {
 
 function generateUnderscore() {
     const head = document.getElementById("zuErwartendesWort");
+    head.querySelectorAll('*').forEach(n => n.remove());
+
     const div = document.createElement("div");
+    div.id = "underscores"
     div.className = 'box centered centerContent';
 
     for (let i = 0; i < zuSuchendesWort.length; i++) {
