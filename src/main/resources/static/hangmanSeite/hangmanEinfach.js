@@ -36,7 +36,7 @@ function getRandomWord() {
 
 function initKeyboard() {
     const arrayIDs = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
-        "S", "T", "U", "V", "W", "X", "Y", "Z", "Ä", "Ü", "Ö", "ß"]
+        "S", "T", "U", "V", "W", "X", "Y", "Z"]
     for (let i = 0; i < arrayIDs.length; i++) {
         document.getElementById(arrayIDs[i]).onclick = function () {
             ueberPruefeEingabe(arrayIDs[i])
