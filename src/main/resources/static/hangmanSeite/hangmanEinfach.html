@@ -19,82 +19,92 @@
         </p>
     </div>
 </section>
-
-
-<section id="bildVonHangman">
-
-<div>
-    <figure class="image is-horizontal-center">
-        <img id="hangmanZustand" src="../assets/images/zuständeHangman/Hangman_0_Fehler.png">
-    </figure>
-</div>
-
-</section>
-
-<section id="zuErwartendesWort">
-</section>
-
-<section id="userTastatur">
-    <div class="box">
-        <table class="table centered">
-            <thead>
-            <tr>
-                <th><abbr title="spalte1"></abbr></th>
-                <th><abbr title="spalte2"></abbr></th>
-                <th><abbr title="spalte3"></abbr></th>
-                <th><abbr title="spalte4"></abbr></th>
-                <th><abbr title="spalte5"></abbr></th>
-                <th><abbr title="spalte6 "></abbr></th>
-                <th><abbr title="spalte7 "></abbr></th>
-                <th><abbr title="spalte8 "></abbr></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><kbd id="A">A</kbd></td>
-                <td><kbd id="B">B</kbd></td>
-                <td><kbd id="C">C</kbd></td>
-                <td><kbd id="D">D</kbd></td>
-                <td><kbd id="E">E</kbd></td>
-                <td><kbd id="F">F</kbd></td>
-                <td><kbd id="G">G</kbd></td>
-                <td><button class="button is-success buttonLink" id="saveHighscore">Highscore speichern</button></td>
+<div id="game">
+    <section id="bildVonHangman">
         
-            </tr>
-            <tr>
-                <td><kbd id="H">H</kbd></td>
-                <td><kbd id="I">I</kbd></td>
-                <td><kbd id="J">J</kbd></td>
-                <td><kbd id="K">K</kbd></td>
-                <td><kbd id="L">L</kbd></td>
-                <td><kbd id="M">M</kbd></td>
-                <td><kbd id="N">N</kbd></td>
-                <td><button class="button is-primary"><a href="http://localhost:9090/highscores/highscores.html" class="buttonLink">Zu den Highscores</a></button></td>
-            </tr>
-            <tr>
-                <td><kbd id="O">O</kbd></td>
-                <td><kbd id="P">P</kbd></td>
-                <td><kbd id="Q">Q</kbd></td>
-                <td><kbd id="R">R</kbd></td>
-                <td><kbd id="S">S</kbd></td>
-                <td><kbd id="T">T</kbd></td>
-                <td><kbd id="U">U</kbd></td>
-                <td><button class="button is-link"><a href="http://localhost:9090/index.html" class="buttonLink">zur Startseite</a></button></td>
-            </tr>
-            <tr>
-                <td><kbd id="V">V</kbd></td>
-                <td><kbd id="W">W</kbd></td>
-                <td><kbd id="X">X</kbd></td>
-                <td><kbd id="Y">Y</kbd></td>
-                <td><kbd id="Z">Z</kbd></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-
+        <div>
+            <figure class="image is-horizontal-center">
+                <img id="hangmanZustand" src="../assets/images/zuständeHangman/Hangman_0_Fehler.png">
+            </figure>
+        </div>
+    
+    </section>
+    <section id="zuErwartendesWort"></section>
+    <section id="userTastatur">
+        <div class="box">
+            <table class="table centered">
+                <thead>
+                <tr>
+                    <th><abbr title="spalte1"></abbr></th>
+                    <th><abbr title="spalte2"></abbr></th>
+                    <th><abbr title="spalte3"></abbr></th>
+                    <th><abbr title="spalte4"></abbr></th>
+                    <th><abbr title="spalte5"></abbr></th>
+                    <th><abbr title="spalte6 "></abbr></th>
+                    <th><abbr title="spalte7 "></abbr></th>
+                    <th><abbr title="spalte8 "></abbr></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><kbd id="A">A</kbd></td>
+                    <td><kbd id="B">B</kbd></td>
+                    <td><kbd id="C">C</kbd></td>
+                    <td><kbd id="D">D</kbd></td>
+                    <td><kbd id="E">E</kbd></td>
+                    <td><kbd id="F">F</kbd></td>
+                    <td><kbd id="G">G</kbd></td>
+                    <td>
+                        <button class="button is-success buttonLink" id="saveHighscore">Highscore speichern</button>
+                    </td>
+                
+                </tr>
+                <tr>
+                    <td><kbd id="H">H</kbd></td>
+                    <td><kbd id="I">I</kbd></td>
+                    <td><kbd id="J">J</kbd></td>
+                    <td><kbd id="K">K</kbd></td>
+                    <td><kbd id="L">L</kbd></td>
+                    <td><kbd id="M">M</kbd></td>
+                    <td><kbd id="N">N</kbd></td>
+                    <td>
+                        <button class="button is-primary"><a href="http://localhost:9090/highscores/highscores.html"
+                                                             class="buttonLink">Zu den Highscores</a></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><kbd id="O">O</kbd></td>
+                    <td><kbd id="P">P</kbd></td>
+                    <td><kbd id="Q">Q</kbd></td>
+                    <td><kbd id="R">R</kbd></td>
+                    <td><kbd id="S">S</kbd></td>
+                    <td><kbd id="T">T</kbd></td>
+                    <td><kbd id="U">U</kbd></td>
+                    <td>
+                        <button class="button is-link"><a href="http://localhost:9090/index.html" class="buttonLink">zur
+                            Startseite</a></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><kbd id="V">V</kbd></td>
+                    <td><kbd id="W">W</kbd></td>
+                    <td><kbd id="X">X</kbd></td>
+                    <td><kbd id="Y">Y</kbd></td>
+                    <td><kbd id="Z">Z</kbd></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+<div id="noGame">
+    <section class="hero is-warning">
+        <div class="has-text-centered">
+            <button class="button is-medium is-link" id="spielStarten">Spiel starten</button>
+        </div>
+    </section>
+</div>
 </body>
 </html>
