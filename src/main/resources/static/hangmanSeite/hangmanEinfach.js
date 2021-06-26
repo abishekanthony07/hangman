@@ -59,18 +59,22 @@ function ueberPruefeEingabe(buchstabe) {
 
 function istSpielGewonnen() {
     if (spielgewonnen) {
-        setTimeout(function () {
-            let auswahl = confirm("Neues Spiel gefällig?");
-            if (auswahl) {
-                newGame();
-            } else {
-                alert("Dann eben nicht...");
-            }
-
-        }, 1000);
+        alertUserNewGame();
     }
 }
 
+
+function alertUserNewGame() {
+    setTimeout(function () {
+         let auswahl = confirm("Neues Spiel gefällig?");
+          if (auswahl) {
+              newGame();
+          } else {
+              alert("Dann eben nicht...");
+          }
+
+    }, 1000);
+}
 function newGame(){
     setzeBackgroundColorZurueck(arrayGenutzeBuchstaben);
     arrayGenutzeBuchstaben = [];
@@ -179,8 +183,10 @@ function fehlerEingabeVonUser() {
 
     let pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
 
-    if (fehlerAnzahlUser >= 11) {
+    if (fehlerAnzahlUser >= 10) {
         alert("GAME OVER...du Lusche");
+        document.getElementById("hangmanZustand").src = aktualisiereBild(10);
+        alertUserNewGame();
     } else if (fehlerAnzahlUser < 11) {
         pfadZuHangmanZustand = aktualisiereBild(fehlerAnzahlUser);
         document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
