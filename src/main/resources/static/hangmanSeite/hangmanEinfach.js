@@ -1,6 +1,7 @@
 const zuSuchendesWort = 'HAUSBAUER';
-const arrayGenutzeBuchstaben = [];
+let arrayGenutzeBuchstaben = [];
 let fehlerAnzahlUser = 0;
+let spielgewonnen = false;
 
 function initView() {
     initKeyboard();
@@ -27,16 +28,53 @@ function initSaveButton() {
 
 function ueberPruefeEingabe(buchstabe) {
     console.log(buchstabe);
-    if (arrayGenutzeBuchstaben.includes(buchstabe)) {
-        alert("Buchstabe " + buchstabe + " wurde bereits eingegeben");
-    } else {
-        arrayGenutzeBuchstaben.push(buchstabe);
-        document.getElementById(buchstabe).style.backgroundColor = "grey";
-        if (enthaeltZuSuchendesWortDenBuchstaben(buchstabe)) {
-            fuelleDieUnterstriche(buchstabe);
-        } else {
-            fehlerEingabeVonUser();
-        }
+
+
+        if (arrayGenutzeBuchstaben.includes(buchstabe)) {
+                alert("Buchstabe " + buchstabe + " wurde bereits eingegeben");
+            } else {
+                arrayGenutzeBuchstaben.push(buchstabe);
+                document.getElementById(buchstabe).style.backgroundColor = "grey";
+                if (enthaeltZuSuchendesWortDenBuchstaben(buchstabe)) {
+                    fuelleDieUnterstriche(buchstabe);
+                    if(istWortBereitsErraten()) {
+                        alert("Spiel gewonnen");
+                        spielgewonnen = true;
+                    }
+                } else {
+                    fehlerEingabeVonUser();
+                }
+            }
+
+      istSpielGewonnen();
+
+
+}
+
+function istSpielGewonnen() {
+    if(spielgewonnen) {
+          setTimeout(function(){
+          let auswahl = confirm("Neues Spiel gefällig?");
+             if(auswahl) {
+                 setzeBackgroundColorZurueck(arrayGenutzeBuchstaben);
+                 arrayGenutzeBuchstaben = [];
+                 fehlerAnzahlUser = 0;
+                 spielgewonnen = false;
+                 pfadZuHangmanZustand = aktualisiereBild(0);
+                 document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
+              } else {
+                 alert("Dann eben nicht...");
+              }
+
+          }, 1000);
+       }
+}
+
+function setzeBackgroundColorZurueck(arrayGenutzeBuchstaben) {
+    let arrayUsedBuchstaben = arrayGenutzeBuchstaben;
+
+    for(let i = 0; i < arrayUsedBuchstaben.length; i++) {
+        document.getElementById(arrayUsedBuchstaben[i]).style.backgroundColor = '#eee';
     }
 
 }
@@ -60,6 +98,17 @@ function fuelleDieUnterstriche(buchstabe) {
 
     }
 
+}
+
+function istWortBereitsErraten() {
+    let anzahlBuchstaben = 0;
+    for(let i = 0; i < zuSuchendesWort.length; i++) {
+        if(arrayGenutzeBuchstaben.includes(zuSuchendesWort.charAt(i))) {
+            ++anzahlBuchstaben;
+        }
+    }
+
+    return anzahlBuchstaben == zuSuchendesWort.length;
 }
 
 function generateUnderscore() {
