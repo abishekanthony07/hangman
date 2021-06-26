@@ -72,7 +72,6 @@ function istSpielGewonnen() {
 }
 
 function newGame(){
-    alert('iam in')
     setzeBackgroundColorZurueck(arrayGenutzeBuchstaben);
     arrayGenutzeBuchstaben = [];
     fehlerAnzahlUser = 0;
