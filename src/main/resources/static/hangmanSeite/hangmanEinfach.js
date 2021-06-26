@@ -2,6 +2,8 @@ const zuSuchendesWort = 'HAUSBAUER';
 let arrayGenutzeBuchstaben = [];
 let fehlerAnzahlUser = 0;
 let spielgewonnen = false;
+const rounds = 0;
+const highscoreURL = 'http://localhost:9090/api/highscore';
 
 function initView() {
     initKeyboard();
@@ -21,13 +23,11 @@ function initKeyboard() {
 
 function initSaveButton() {
     document.getElementById("saveHighscore").onclick = function () {
-        let person = prompt("Please enter your name", "");
+        let person = prompt("Bitte geben Sie ihren Benutzernamen ein.", "");
         if (person == null || person === "" || person.length > 5) {
             alert("Highscore wurde nicht gespeichert.");
         } else {
-            console.log(person, rounds.toString())
-            saveGame(person,rounds.toString())
-            alert("Highscore wurde gespeichert.");
+            saveGame(person, rounds.toString())
         }
     };
 }
@@ -36,50 +36,55 @@ function ueberPruefeEingabe(buchstabe) {
     console.log(buchstabe);
 
 
-        if (arrayGenutzeBuchstaben.includes(buchstabe)) {
-                alert("Buchstabe " + buchstabe + " wurde bereits eingegeben");
-            } else {
-                arrayGenutzeBuchstaben.push(buchstabe);
-                document.getElementById(buchstabe).style.backgroundColor = "grey";
-                if (enthaeltZuSuchendesWortDenBuchstaben(buchstabe)) {
-                    fuelleDieUnterstriche(buchstabe);
-                    if(istWortBereitsErraten()) {
-                        alert("Spiel gewonnen");
-                        spielgewonnen = true;
-                    }
-                } else {
-                    fehlerEingabeVonUser();
-                }
+    if (arrayGenutzeBuchstaben.includes(buchstabe)) {
+        alert("Buchstabe " + buchstabe + " wurde bereits eingegeben");
+    } else {
+        arrayGenutzeBuchstaben.push(buchstabe);
+        document.getElementById(buchstabe).style.backgroundColor = "grey";
+        if (enthaeltZuSuchendesWortDenBuchstaben(buchstabe)) {
+            fuelleDieUnterstriche(buchstabe);
+            if (istWortBereitsErraten()) {
+                alert("Spiel gewonnen");
+                spielgewonnen = true;
             }
+        } else {
+            fehlerEingabeVonUser();
+        }
+    }
 
-      istSpielGewonnen();
+    istSpielGewonnen();
 
 
 }
 
 function istSpielGewonnen() {
-    if(spielgewonnen) {
-          setTimeout(function(){
-          let auswahl = confirm("Neues Spiel gefällig?");
-             if(auswahl) {
-                 setzeBackgroundColorZurueck(arrayGenutzeBuchstaben);
-                 arrayGenutzeBuchstaben = [];
-                 fehlerAnzahlUser = 0;
-                 spielgewonnen = false;
-                 pfadZuHangmanZustand = aktualisiereBild(0);
-                 document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
-              } else {
-                 alert("Dann eben nicht...");
-              }
+    if (spielgewonnen) {
+        setTimeout(function () {
+            let auswahl = confirm("Neues Spiel gefällig?");
+            if (auswahl) {
+                newGame();
+            } else {
+                alert("Dann eben nicht...");
+            }
 
-          }, 1000);
-       }
+        }, 1000);
+    }
+}
+
+function newGame(){
+    alert('iam in')
+    setzeBackgroundColorZurueck(arrayGenutzeBuchstaben);
+    arrayGenutzeBuchstaben = [];
+    fehlerAnzahlUser = 0;
+    spielgewonnen = false;
+    pfadZuHangmanZustand = aktualisiereBild(0);
+    document.getElementById("hangmanZustand").src = pfadZuHangmanZustand;
 }
 
 function setzeBackgroundColorZurueck(arrayGenutzeBuchstaben) {
     let arrayUsedBuchstaben = arrayGenutzeBuchstaben;
 
-    for(let i = 0; i < arrayUsedBuchstaben.length; i++) {
+    for (let i = 0; i < arrayUsedBuchstaben.length; i++) {
         document.getElementById(arrayUsedBuchstaben[i]).style.backgroundColor = '#eee';
     }
 
@@ -108,13 +113,13 @@ function fuelleDieUnterstriche(buchstabe) {
 
 function istWortBereitsErraten() {
     let anzahlBuchstaben = 0;
-    for(let i = 0; i < zuSuchendesWort.length; i++) {
-        if(arrayGenutzeBuchstaben.includes(zuSuchendesWort.charAt(i))) {
+    for (let i = 0; i < zuSuchendesWort.length; i++) {
+        if (arrayGenutzeBuchstaben.includes(zuSuchendesWort.charAt(i))) {
             ++anzahlBuchstaben;
         }
     }
 
-    return anzahlBuchstaben == zuSuchendesWort.length;
+    return anzahlBuchstaben === zuSuchendesWort.length;
 }
 
 function generateUnderscore() {
@@ -183,17 +188,14 @@ function fehlerEingabeVonUser() {
     }
 }
 
+async function saveGame(username, score) {
+    let entry = await fetch(highscoreURL, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({username: username, score: score})
+    });
 
-function saveGame(username, score) {
-    const json = JSON.stringify({"username": username, "score": score})
-    const url = 'http://localhost:9090/api/highscore';
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send();
-    xhr.onload = function () {
-        // xhr.response beinhaltet die deserialisierte JSON-Antwort
-        console.log(xhr.response)
-    };
-    return json
+    // Gespeicherten Eintrag anzeigen
+    await entry.json();
+    alert(`Folgendes wurde gespeichert: ${username} hat ${score} Wörter erraten`);
 }

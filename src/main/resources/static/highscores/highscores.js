@@ -1,4 +1,4 @@
-const automarkenURL = 'http://localhost:9090/api/highscore';
+const highscoreURL = 'http://localhost:9090/api/highscore';
 
 function loadValues() {
     loadHighscores();
@@ -7,7 +7,7 @@ function loadValues() {
 function loadHighscores() {
     const head = document.getElementById('highscores');
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", automarkenURL);
+    xhr.open("GET", highscoreURL);
     xhr.responseType = "json";
     xhr.onload = function () {
         // xhr.response beinhaltet die deserialisierte JSON-Antwort
