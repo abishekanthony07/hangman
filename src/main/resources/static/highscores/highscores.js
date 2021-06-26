@@ -1,6 +1,4 @@
-var automarkenURL = 'http://localhost:9090/api/highscore';
-
-window.onload = loadValues;
+const highscoreURL = 'http://localhost:9090/api/highscore';
 
 function loadValues() {
     loadHighscores();
@@ -9,7 +7,7 @@ function loadValues() {
 function loadHighscores() {
     const head = document.getElementById('highscores');
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", automarkenURL);
+    xhr.open("GET", highscoreURL);
     xhr.responseType = "json";
     xhr.onload = function () {
         // xhr.response beinhaltet die deserialisierte JSON-Antwort
@@ -24,7 +22,6 @@ function showResult(head, array) {
     const container = document.createElement("div");
     container.className = "container"
     let div;
-    debugger;
     if (array.length>0){
         div = notEmptyList(i, array);
     }else{
@@ -44,10 +41,10 @@ function emptyList() {
 }
 
 function notEmptyList(i, array) {
-    var div = document.createElement("div");
+    const div = document.createElement("div");
     div.className = "box";
     for (i = 0; i < array.length; i++) {
-        var h1 = document.createElement("h1");
+        const h1 = document.createElement("h1");
         h1.className = "title";
         h1.innerHTML = listItem(i, array)
         h1.type = "button";
