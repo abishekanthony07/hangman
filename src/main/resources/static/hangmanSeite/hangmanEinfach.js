@@ -1,12 +1,40 @@
-const zuSuchendesWort = 'HAUSBAUER';
+var zuSuchendesWort = '';
 const arrayGenutzeBuchstaben = [];
 var fehlerAnzahlUser = 0;
 
 function initView(){
+getRandomWord();
     initKeyboard();
     generateUnderscore();
     initSaveButton();
 }
+
+function getRandomWord() {
+ const path = "/Liste.txt";
+
+ var file = new XMLHttpRequest();
+    file.open("GET", path, false);
+    file.onreadystatechange = function ()
+    {
+        if(file.readyState === 4)
+        {
+            if(file.status === 200 || file.status == 0)
+            {
+
+               var allData = file.responseText;
+               var lines = allData.split("\n");
+               var randomNumber = Math.floor(Math.random() * lines.length);
+
+               var line = lines[randomNumber];
+
+              zuSuchendesWort = line;
+              alert(line);
+            }
+        }
+    }
+    file.send(null);
+}
+
 
 function initKeyboard(){
     const arrayIDs = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
