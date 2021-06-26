@@ -1,6 +1,7 @@
 const zuSuchendesWort = 'HAUSBAUER';
 const arrayGenutzeBuchstaben = [];
 let fehlerAnzahlUser = 0;
+let rounds = 1;
 
 function initView() {
     initKeyboard();
@@ -19,9 +20,15 @@ function initKeyboard() {
 }
 
 function initSaveButton() {
-    //TODO - alert write username
     document.getElementById("saveHighscore").onclick = function () {
-        // saveGame("","")
+        let person = prompt("Please enter your name", "");
+        if (person == null || person === "" || person.length > 5) {
+            alert("Highscore wurde nicht gespeichert.");
+        } else {
+            console.log(person, rounds.toString())
+            saveGame(person,rounds.toString())
+            alert("Highscore wurde gespeichert.");
+        }
     };
 }
 
