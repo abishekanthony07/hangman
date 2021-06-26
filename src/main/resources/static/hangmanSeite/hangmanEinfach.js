@@ -2,13 +2,19 @@ var zuSuchendesWort = '';
 let arrayGenutzeBuchstaben = [];
 let fehlerAnzahlUser = 0;
 let spielgewonnen = false;
-const rounds = 0;
+let rounds = -1;
 const highscoreURL = 'http://localhost:9090/api/highscore';
 
 function initView() {
-    getRandomWord();
+    newGame();
     initKeyboard();
     initSaveButton();
+}
+
+function initStartGameButton() {
+    document.getElementById('spielStarten').onclick = function () {
+        newGame();
+    };
 }
 
 function getRandomWord() {
@@ -27,6 +33,7 @@ function getRandomWord() {
                 const line = lines[randomNumber];
                 zuSuchendesWort = line.replace("\r","").toUpperCase();
                 generateUnderscore();
+                console.log(zuSuchendesWort)
             }
         }
     }
@@ -94,12 +101,15 @@ function alertUserNewGame() {
             newGame();
         } else {
             alert("Dann eben nicht...");
+            hideGame(true)
         }
 
     }, 1000);
 }
 
 function newGame() {
+    rounds = rounds + 1;
+    hideGame(false);
     setzeBackgroundColorZurueck(arrayGenutzeBuchstaben);
     arrayGenutzeBuchstaben = [];
     fehlerAnzahlUser = 0;
@@ -224,6 +234,7 @@ function fehlerEingabeVonUser() {
 
     if (fehlerAnzahlUser >= 10) {
         alert("GAME OVER...du Lusche");
+        rounds = -1;
         document.getElementById("hangmanZustand").src = aktualisiereBild(10);
         alertUserNewGame();
     } else if (fehlerAnzahlUser < 11) {
@@ -242,4 +253,17 @@ async function saveGame(username, score) {
     // Gespeicherten Eintrag anzeigen
     await entry.json();
     alert(`Folgendes wurde gespeichert: ${username} hat ${score} Wörter erraten`);
+}
+
+function hideGame(value) {
+    const noGame = document.getElementById("noGame");
+    const game = document.getElementById("game");
+    if (value) {
+        game.style.display = "none";
+        noGame.style.display = "block";
+        initStartGameButton();
+    } else {
+        game.style.display = "block";
+        noGame.style.display = "none";
+    }
 }
