@@ -1,4 +1,4 @@
-var automarkenURL = 'http://localhost:9090/api/highscore';
+const automarkenURL = 'http://localhost:9090/api/highscore';
 
 function loadValues() {
     loadHighscores();
@@ -41,10 +41,10 @@ function emptyList() {
 }
 
 function notEmptyList(i, array) {
-    var div = document.createElement("div");
+    const div = document.createElement("div");
     div.className = "box";
     for (i = 0; i < array.length; i++) {
-        var h1 = document.createElement("h1");
+        const h1 = document.createElement("h1");
         h1.className = "title";
         h1.innerHTML = listItem(i, array)
         h1.type = "button";
