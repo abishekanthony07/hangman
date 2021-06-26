@@ -162,7 +162,10 @@ function istWortBereitsErraten() {
 
 function generateUnderscore() {
     const head = document.getElementById("zuErwartendesWort");
-    head.querySelectorAll('*').forEach(n => n.remove());
+
+    if (head !==null){
+        head.querySelectorAll('*').forEach(n => n.remove());
+    }
 
     const div = document.createElement("div");
     div.id = "underscores"
@@ -253,6 +256,7 @@ async function saveGame(username, score) {
     // Gespeicherten Eintrag anzeigen
     await entry.json();
     alert(`Folgendes wurde gespeichert: ${username} hat ${score} Wörter erraten`);
+    return {username: username, score: score}
 }
 
 function hideGame(value) {
