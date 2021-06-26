@@ -1,4 +1,4 @@
-const zuSuchendesWort = 'HAUSBAUER';
+const zuSuchendesWort = 'Start-Methode';
 let arrayGenutzeBuchstaben = [];
 let fehlerAnzahlUser = 0;
 let spielgewonnen = false;
@@ -66,16 +66,17 @@ function istSpielGewonnen() {
 
 function alertUserNewGame() {
     setTimeout(function () {
-         let auswahl = confirm("Neues Spiel gefällig?");
-          if (auswahl) {
-              newGame();
-          } else {
-              alert("Dann eben nicht...");
-          }
+        let auswahl = confirm("Neues Spiel gefällig?");
+        if (auswahl) {
+            newGame();
+        } else {
+            alert("Dann eben nicht...");
+        }
 
     }, 1000);
 }
-function newGame(){
+
+function newGame() {
     setzeBackgroundColorZurueck(arrayGenutzeBuchstaben);
     arrayGenutzeBuchstaben = [];
     fehlerAnzahlUser = 0;
@@ -131,14 +132,25 @@ function generateUnderscore() {
     div.className = 'box centered centerContent';
 
     for (let i = 0; i < zuSuchendesWort.length; i++) {
-        let u = document.createElement("u");
-        u.className = 'hiddenText'
-        u.innerHTML = `&nbsp;&nbsp;&nbsp;`;
-        u.id = `underscore-${i}`;
-        let platzHalter = document.createElement("b");
-        platzHalter.innerHTML = `&nbsp;`;
-        div.appendChild(u);
-        div.appendChild(platzHalter);
+        if(zuSuchendesWort[i]==='-' || zuSuchendesWort[i]==="-"){
+            let u = document.createElement("b");
+            u.className = 'hiddenText'
+            u.innerHTML = `&nbsp;-&nbsp;`;
+            u.id = `underscore-${i}`;
+            let platzHalter = document.createElement("b");
+            platzHalter.innerHTML = `&nbsp;`;
+            div.appendChild(u);
+            div.appendChild(platzHalter);
+        }else{
+            let u = document.createElement("u");
+            u.className = 'hiddenText'
+            u.innerHTML = `&nbsp;&nbsp;&nbsp;`;
+            u.id = `underscore-${i}`;
+            let platzHalter = document.createElement("b");
+            platzHalter.innerHTML = `&nbsp;`;
+            div.appendChild(u);
+            div.appendChild(platzHalter);
+        }
     }
     if (head !== null) {
         head.appendChild(div)
