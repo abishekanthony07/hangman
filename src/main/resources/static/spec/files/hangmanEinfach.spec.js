@@ -6,7 +6,9 @@ describe('Testen der Unterstriche', function (){
 
 describe('Testen des Speicherns', function (){
     it('should test save', function () {
-        expect(saveGame("TestUser", "12")).toBe("{\"username\":\"TestUser\",\"score\":\"12\"}");
+        saveGame("TestUser", "12").then(v =>{
+            expect(v).toBe("{username:\"TestUser\", score:\"12\"}");
+        })
     });
 })
 
